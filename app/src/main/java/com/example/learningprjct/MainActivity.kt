@@ -17,6 +17,8 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.wrapContentHeight
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
@@ -52,29 +54,13 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    Column(
-                        modifier = Modifier.verticalScroll(rememberScrollState())
+                    LazyColumn(
+                        //modifier = Modifier.verticalScroll(rememberScrollState())
                     ) {
-                        ListItem(name = "Nikita", description = "Horosh")
-                        ListItem(name = "Nikita", description = "Horosh")
-                        ListItem(name = "Nikita", description = "Horosh")
-                        ListItem(name = "Nikita", description = "Horosh")
-                        ListItem(name = "Nikita", description = "Horosh")
-                        ListItem(name = "Nikita", description = "Horosh")
-                        ListItem(name = "Nikita", description = "Horosh")
-                        ListItem(name = "Nikita", description = "Horosh")
-                        ListItem(name = "Nikita", description = "Horosh")
-                        ListItem(name = "Nikita", description = "Horosh")
-                        ListItem(name = "Nikita", description = "Horosh")
-                        ListItem(name = "Nikita", description = "Horosh")
-                        ListItem(name = "Nikita", description = "Horosh")
-                        ListItem(name = "Nikita", description = "Horosh")
-                        ListItem(name = "Nikita", description = "Horosh")
-                        ListItem(name = "Nikita", description = "Horosh")
-                        ListItem(name = "Nikita", description = "Horosh")
-                        ListItem(name = "Nikita", description = "Horosh")
-                        ListItem(name = "Nikita", description = "Horosh")
-                        ListItem(name = "Nikita", description = "Horosh")
+                        itemsIndexed(listOf("1", "2", "3")
+                        ) {  index, item ->
+                            ListItem(name = "Nikita", description = "$item")
+                        }
                     }
                 }
             }
