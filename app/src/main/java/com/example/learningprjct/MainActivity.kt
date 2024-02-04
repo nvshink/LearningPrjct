@@ -18,6 +18,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -34,6 +35,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.layout.ContentScale
@@ -55,11 +57,30 @@ class MainActivity : ComponentActivity() {
                     color = MaterialTheme.colorScheme.background
                 ) {
                     LazyColumn(
-                        //modifier = Modifier.verticalScroll(rememberScrollState())
+                        modifier = Modifier
+                            .wrapContentHeight()
+                            .fillMaxWidth()
+                            .background(
+                                Brush.verticalGradient(
+                                listOf(
+                                    Color.Transparent,
+                                    Color.Cyan,
+                                    Color.Green,
+                                    Color.Transparent
+                                )
+                            ))
                     ) {
-                        itemsIndexed(listOf("1", "2", "3")
-                        ) {  index, item ->
-                            ListItem(name = "Nikita", description = "$item")
+                        itemsIndexed(listOf(
+                            ItemRowModel(R.drawable.ava, "Я", "Я русский и иду до конца, я русский, моя кровь от отца, я русский!"),
+                            ItemRowModel(R.drawable.girl_1, "Девушка 1", "Я русский и иду до конца, я русский, моя кровь от отца, я русский!"),
+                            ItemRowModel(R.drawable.girl_2, "Девушка 2", "Я русский и иду до конца, я русский, моя кровь от отца, я русский!"),
+                            ItemRowModel(R.drawable.girl_3, "Девушка 3", "Я русский и иду до конца, я русский, моя кровь от отца, я русский!"),
+                            ItemRowModel(R.drawable.girl_4, "Девушка 4", "Я русский и иду до конца, я русский, моя кровь от отца, я русский!"),
+                            ItemRowModel(R.drawable.girl_5, "Девушка 5", "Я русский и иду до конца, я русский, моя кровь от отца, я русский!"),
+
+                            )
+                        ) {  _, item ->
+                            ItemRow(item = item)
                         }
                     }
                 }
@@ -91,7 +112,7 @@ private fun ListItem(name: String, description: String) {
             .wrapContentHeight()
             .background(color = color.value)
             .clickable {
-                when(++counter.value){
+                when (++counter.value) {
                     10 -> color.value = Color.Cyan
                 }
 
